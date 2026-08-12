@@ -1,0 +1,2 @@
+<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>"><label><span class="screen-reader-text"><?php esc_html_e( '搜索：', 'xinaide-cloud' ); ?></span><input type="search" class="search-field" placeholder="<?php esc_attr_e( '搜索文章…', 'xinaide-cloud' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s"></label><button type="submit" class="search-submit"><?php esc_html_e( '搜索', 'xinaide-cloud' ); ?></button></form>
+
