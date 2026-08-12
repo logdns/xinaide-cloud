@@ -1,27 +1,39 @@
 <?php get_header(); ?>
-<?php if ( is_home() && ! is_paged() ) : ?>
-	<section class="hero-section">
+<?php if ( is_home() && ! is_paged() && xinaide_cloud_option_enabled( 'show_home_hero' ) ) : ?>
+	<?php $hero_background = xinaide_cloud_get_option( 'hero_background' ) ?: get_template_directory_uri() . '/assets/images/hero-water.jpg'; ?>
+	<section class="hero-section" style="--hero-image:url('<?php echo esc_url( $hero_background ); ?>')">
 		<div class="cloud-container hero-inner">
 			<div class="hero-copy">
-				<p class="eyebrow"><?php echo esc_html( get_theme_mod( 'xinaide_cloud_hero_eyebrow', 'PRIVATE DIGITAL GARDEN' ) ); ?></p>
-				<h1><?php echo esc_html( get_theme_mod( 'xinaide_cloud_hero_title', '私人小天地' ) ); ?></h1>
-				<p><?php echo esc_html( get_theme_mod( 'xinaide_cloud_hero_text', '谈天说地，记录折腾、学习与生活。' ) ); ?></p>
-				<a class="hero-link" href="#latest-posts"><?php esc_html_e( '浏览最新文章', 'xinaide-cloud' ); ?> <span>↓</span></a>
+				<p class="eyebrow"><?php echo esc_html( xinaide_cloud_get_option( 'hero_eyebrow' ) ); ?></p>
+				<h1><?php echo nl2br( esc_html( xinaide_cloud_get_option( 'hero_title' ) ) ); ?></h1>
+				<p class="hero-description"><?php echo esc_html( xinaide_cloud_get_option( 'hero_text' ) ); ?></p>
+				<div class="hero-actions">
+					<a class="hero-button hero-button-primary" href="<?php echo esc_url( xinaide_cloud_get_option( 'hero_primary_url' ) ); ?>"><?php echo esc_html( xinaide_cloud_get_option( 'hero_primary_text' ) ); ?> <span>↘</span></a>
+					<a class="hero-button hero-button-secondary" href="<?php echo esc_url( xinaide_cloud_get_option( 'hero_secondary_url' ) ); ?>"><?php echo esc_html( xinaide_cloud_get_option( 'hero_secondary_text' ) ); ?> <span>→</span></a>
+				</div>
 			</div>
-			<div class="hero-scene" aria-hidden="true">
-				<span class="scene-sun"></span>
-				<div class="scene-card scene-card-main"><span class="scene-cloud">☁</span><small>xinai.de</small></div>
-				<div class="scene-note note-one"><i></i> 记录生活</div>
-				<div class="scene-note note-two"><i></i> 分享折腾</div>
-				<span class="scene-spark spark-one">✦</span><span class="scene-spark spark-two">✦</span>
+			<div class="hero-manifesto">
+				<span class="manifesto-index">01 — 记录</span>
+				<p>分享有用的经验，<br>也保留真实的生活。</p>
+				<div class="manifesto-line"></div>
+				<small>EST. 2009 · XINAI.DE</small>
 			</div>
 		</div>
+		<div class="cloud-container hero-stats">
+			<?php foreach ( array( 'one', 'two', 'three' ) as $stat ) : ?>
+				<div><strong><?php echo esc_html( xinaide_cloud_get_option( 'hero_stat_' . $stat . '_value' ) ); ?></strong><span><?php echo esc_html( xinaide_cloud_get_option( 'hero_stat_' . $stat . '_label' ) ); ?></span></div>
+			<?php endforeach; ?>
+			<a href="#latest-posts" aria-label="<?php esc_attr_e( '向下浏览文章', 'xinaide-cloud' ); ?>">↓</a>
+		</div>
+	</section>
+	<section class="topic-strip" aria-label="<?php esc_attr_e( '热门分类', 'xinaide-cloud' ); ?>">
+		<div class="cloud-container topic-strip-inner"><span><?php esc_html_e( '探索主题', 'xinaide-cloud' ); ?></span><?php foreach ( get_categories( array( 'orderby' => 'count', 'order' => 'DESC', 'number' => 7 ) ) as $topic ) : ?><a href="<?php echo esc_url( get_category_link( $topic ) ); ?>"><?php echo esc_html( $topic->name ); ?><sup><?php echo esc_html( $topic->count ); ?></sup></a><?php endforeach; ?></div>
 	</section>
 <?php endif; ?>
 <div class="cloud-container content-grid" id="latest-posts">
 	<section class="posts-column">
 		<header class="section-heading">
-			<div><p class="eyebrow"><?php esc_html_e( 'LATEST STORIES', 'xinaide-cloud' ); ?></p><h1><?php echo is_home() ? esc_html__( '最新文章', 'xinaide-cloud' ) : esc_html( get_the_archive_title() ); ?></h1></div>
+			<div><p class="eyebrow"><?php esc_html_e( 'LATEST STORIES · 持续更新', 'xinaide-cloud' ); ?></p><h1><?php echo is_home() ? esc_html__( '最新发布', 'xinaide-cloud' ) : esc_html( get_the_archive_title() ); ?></h1></div>
 			<span class="section-rule"></span>
 		</header>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); get_template_part( 'template-parts/content', 'card' ); endwhile; ?>
