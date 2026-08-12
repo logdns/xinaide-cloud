@@ -15,7 +15,7 @@
 
 ## 安装
 
-1. 下载仓库源码 ZIP，或下载 Release 中的 `xinaide-cloud.zip`。
+1. 下载可安装包 [`xinaide-cloud.zip`](releases/xinaide-cloud.zip)，或下载仓库源码 ZIP。
 2. 将主题压缩包上传到 WordPress「外观 → 主题 → 安装主题」。
 3. 启用后到「外观 → 菜单」设置主导航和页脚导航。
 4. 到「外观 → 小工具」设置博客侧栏。
