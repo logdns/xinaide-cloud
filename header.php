@@ -15,7 +15,8 @@
 	<div class="header-accent" aria-hidden="true"></div>
 	<div class="cloud-container header-inner">
 		<div class="site-brand-wrap">
-			<?php if ( has_custom_logo() ) : ?><div class="custom-logo-wrap"><?php the_custom_logo(); ?></div><?php else : ?><a class="brand-mark" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php bloginfo( 'name' ); ?>">心</a><?php endif; ?>
+			<?php $brand_avatar = xinaide_cloud_avatar_url( xinaide_cloud_get_option( 'brand_avatar' ) ); ?>
+			<?php if ( has_custom_logo() ) : ?><div class="custom-logo-wrap"><?php the_custom_logo(); ?></div><?php elseif ( $brand_avatar ) : ?><a class="brand-mark brand-mark-image" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php bloginfo( 'name' ); ?>"><img src="<?php echo esc_url( $brand_avatar ); ?>" alt=""></a><?php else : ?><a class="brand-mark" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php bloginfo( 'name' ); ?>">心</a><?php endif; ?>
 			<a class="brand-copy" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 				<strong><?php bloginfo( 'name' ); ?></strong>
 				<small><?php bloginfo( 'description' ); ?></small>

@@ -16,6 +16,7 @@ function xinaide_cloud_option_defaults() {
 		'max_width'              => 1320,
 		'sidebar_width'          => 340,
 		'card_radius'            => 16,
+		'brand_avatar'           => '',
 		'header_style'           => 'dark',
 		'sidebar_position'       => 'right',
 		'sticky_header'          => 1,
@@ -102,7 +103,7 @@ function xinaide_cloud_sanitize_options( $input ) {
 	$defaults = xinaide_cloud_option_defaults();
 	$output   = array();
 	$checks   = array( 'sticky_header', 'show_home_hero', 'show_author', 'show_date', 'show_reading_time', 'show_comments', 'show_views', 'show_likes', 'show_breadcrumbs', 'show_toc', 'title_only_search', 'show_profile_card', 'show_rss', 'show_uptime', 'show_status' );
-	$urls     = array( 'hero_background', 'hero_primary_url', 'hero_secondary_url', 'profile_avatar', 'profile_button_url', 'contact_qr', 'default_cover', 'footer_gov_url', 'social_github', 'social_telegram', 'social_weibo', 'social_bilibili', 'social_x', 'social_youtube', 'status_url', 'share_image' );
+	$urls     = array( 'hero_background', 'hero_primary_url', 'hero_secondary_url', 'brand_avatar', 'profile_avatar', 'profile_button_url', 'contact_qr', 'default_cover', 'footer_gov_url', 'social_github', 'social_telegram', 'social_weibo', 'social_bilibili', 'social_x', 'social_youtube', 'status_url', 'share_image' );
 	$textarea = array( 'hero_title', 'hero_text', 'profile_text', 'footer_text', 'custom_css' );
 	$numbers  = array( 'max_width', 'sidebar_width', 'card_radius', 'hero_height', 'hero_overlay', 'excerpt_length' );
 
@@ -229,6 +230,7 @@ function xinaide_cloud_options_brand_panel( $o ) {
 	xinaide_cloud_field( $o, 'max_width', '内容最大宽度（px）', 'number', '推荐 1280–1400。' );
 	xinaide_cloud_field( $o, 'sidebar_width', '侧栏宽度（px）', 'number' );
 	xinaide_cloud_field( $o, 'card_radius', '卡片圆角（px）', 'number' );
+	xinaide_cloud_field( $o, 'brand_avatar', '页头头像（Logo）', 'image', '上传后自动裁切为圆形显示在页头左侧；留空显示默认「心」字标。' );
 	xinaide_cloud_field( $o, 'header_style', '页头风格', 'select', '默认跟随浅色/深色模式自动切换。', array( 'dark' => '跟随明暗模式（推荐）', 'light' => '固定明亮简洁', 'glass' => '首页透明玻璃' ) );
 	xinaide_cloud_field( $o, 'sidebar_position', '侧栏位置', 'select', '', array( 'right' => '右侧', 'left' => '左侧' ) );
 	xinaide_cloud_field( $o, 'sticky_header', '吸顶导航', 'checkbox' );
@@ -277,7 +279,7 @@ function xinaide_cloud_options_sidebar_panel( $o ) {
 	xinaide_cloud_field( $o, 'show_profile_card', '显示站长介绍卡', 'checkbox' );
 	xinaide_cloud_field( $o, 'profile_title', '介绍标题' );
 	xinaide_cloud_field( $o, 'profile_text', '介绍内容', 'textarea' );
-	xinaide_cloud_field( $o, 'profile_avatar', '头像', 'image' );
+	xinaide_cloud_field( $o, 'profile_avatar', '头像', 'image', '上传后自动裁切为圆形显示。' );
 	xinaide_cloud_field( $o, 'profile_button_text', '介绍按钮文字' );
 	xinaide_cloud_field( $o, 'profile_button_url', '介绍按钮链接', 'url' );
 	xinaide_cloud_field( $o, 'contact_title', '二维码标题' );

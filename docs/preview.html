@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>xinaide-cloud v1.4.0 修复预览</title>
+<link rel="stylesheet" href="../assets/dist/app.css">
+<style>
+  body { padding-bottom: 60px; }
+  .preview-note { max-width: 1320px; margin: 30px auto 0; padding: 0 32px; color: #64787a; font-size: 13px; line-height: 1.9; }
+  .preview-note strong { color: #18a88f; }
+</style>
+</head>
+<body class="header-style-dark sidebar-position-right">
+
+<!-- ① 页头：浅色模式白底深字 + 上传头像圆形裁切 -->
+<header class="site-header">
+  <div class="header-accent"></div>
+  <div class="cloud-container header-inner">
+    <div class="site-brand-wrap">
+      <a class="brand-mark brand-mark-image" href="#"><img src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22><rect width=%22160%22 height=%22160%22 fill=%22%2318a88f%22/><circle cx=%2280%22 cy=%2262%22 r=%2226%22 fill=%22%23fff%22/><rect x=%2240%22 y=%2298%22 width=%2280%22 height=%2240%22 rx=%2220%22 fill=%22%23fff%22/></svg>" alt=""></a>
+      <a class="brand-copy" href="#"><strong>心爱的-小沨</strong><small>知名博客|折腾博客|心爱的 / xinai.de</small></a>
+    </div>
+    <nav class="desktop-nav"><ul class="menu">
+      <li class="current-menu-item"><a href="#">首页</a></li>
+      <li><a href="#">网盘</a></li>
+      <li><a href="#">图床</a></li>
+      <li><a href="#">赞助</a></li>
+      <li><a href="#">关于本站</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<p class="preview-note"><strong>① 页头</strong>：浅色模式下白底深色导航；「页头头像」上传后自动圆形裁切（此处用示例图演示，原为「心」字标）。</p>
+
+<!-- ② 横幅数据统计：长文字不换行错乱 -->
+<section class="hero-section" style="--hero-image:url('../assets/images/hero-water.jpg'); min-height:340px">
+  <div class="cloud-container hero-inner" style="min-height:220px">
+    <div class="hero-copy">
+      <p class="eyebrow">XINAI.DE · PRIVATE DIGITAL GARDEN</p>
+      <h1 style="font-size:56px">在折腾里，记录世界。</h1>
+    </div>
+  </div>
+  <div class="cloud-container hero-stats">
+    <div><strong>16+</strong><span>年持续记录</span></div>
+    <div><strong>640+</strong><span>篇内容沉淀</span></div>
+    <div><strong>生活 × 技术</strong><span>长期主义</span></div>
+    <a href="#">↓</a>
+  </div>
+</section>
+
+<p class="preview-note"><strong>② 横幅数据</strong>：「生活 × 技术」不再换行错乱，数值 nowrap + 自适应字号。</p>
+
+<div class="cloud-container narrow-container" style="padding-top:36px">
+  <div class="entry-content">
+    <h2>一键安装</h2>
+    <p>支持 Debian / Ubuntu 服务器。准备解析到服务器的邮件主机名，例如 <code>mail.example.com</code>。</p>
+    <pre><code>curl -fsSL https://raw.githubusercontent.com/logdns/imyemail/main/install.sh | sudo bash</code></pre>
+    <p>脚本会自动完成：下载 Rust 管理器并校验 SHA-256，安装 Docker Engine 与 Compose v2。</p>
+  </div>
+</div>
+
+<p class="preview-note"><strong>③ 代码块</strong>：浅色面板 + 深色等宽文字，兼容 Editor.md / Prism 浅色高亮，深字深底问题已修复。</p>
+
+</body>
+</html>

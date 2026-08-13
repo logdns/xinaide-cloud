@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'XINAIDE_CLOUD_VERSION', '1.3.3' );
+define( 'XINAIDE_CLOUD_VERSION', '1.4.0' );
 
 require_once get_template_directory() . '/inc/theme-options.php';
 
@@ -18,6 +18,7 @@ function xinaide_cloud_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'xinaide-card', 640, 400, true );
+	add_image_size( 'xinaide-avatar', 160, 160, true );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'align-wide' );
@@ -150,6 +151,28 @@ function xinaide_cloud_reading_time() {
 	$content = wp_strip_all_tags( get_post_field( 'post_content', get_the_ID() ) );
 	$count   = function_exists( 'mb_strlen' ) ? mb_strlen( $content, 'UTF-8' ) : strlen( $content );
 	return max( 1, (int) ceil( $count / 500 ) );
+}
+
+/**
+ * Resolve an uploaded image URL to the auto-cropped square avatar size.
+ * Falls back to the raw URL (CSS circle crop still applies) for external images.
+ *
+ * @param string $url Image URL saved in theme options.
+ * @return string
+ */
+function xinaide_cloud_avatar_url( $url ) {
+	$url = trim( (string) $url );
+	if ( ! $url ) {
+		return '';
+	}
+	$attachment_id = function_exists( 'attachment_url_to_postid' ) ? attachment_url_to_postid( $url ) : 0;
+	if ( $attachment_id ) {
+		$cropped = wp_get_attachment_image_src( $attachment_id, 'xinaide-avatar' );
+		if ( is_array( $cropped ) && ! empty( $cropped[0] ) ) {
+			return $cropped[0];
+		}
+	}
+	return esc_url_raw( $url );
 }
 
 function xinaide_cloud_get_post_cover( $post_id = 0 ) {
@@ -392,20 +415,3 @@ function xinaide_cloud_social_icon( $key ) {
 	$path = isset( $paths[ $key ] ) ? $paths[ $key ] : '<circle cx="12" cy="12" r="9"/>';
 	return '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false">' . $path . '</svg>';
 }
-
-function xinaide_cloud_customize_register( $wp_customize ) {
-	$wp_customize->add_section(
-		'xinaide_cloud_home',
-		array( 'title' => __( 'Xinaide Cloud 首页', 'xinaide-cloud' ), 'priority' => 35 )
-	);
-	$settings = array(
-		'hero_eyebrow' => array( 'label' => __( '首页眉题', 'xinaide-cloud' ), 'default' => 'PRIVATE DIGITAL GARDEN' ),
-		'hero_title'   => array( 'label' => __( '首页标题', 'xinaide-cloud' ), 'default' => '私人小天地' ),
-		'hero_text'    => array( 'label' => __( '首页说明', 'xinaide-cloud' ), 'default' => '谈天说地，记录折腾、学习与生活。' ),
-	);
-	foreach ( $settings as $key => $args ) {
-		$wp_customize->add_setting( 'xinaide_cloud_' . $key, array( 'default' => $args['default'], 'sanitize_callback' => 'sanitize_text_field' ) );
-		$wp_customize->add_control( 'xinaide_cloud_' . $key, array( 'section' => 'xinaide_cloud_home', 'label' => $args['label'], 'type' => 'text' ) );
-	}
-}
-add_action( 'customize_register', 'xinaide_cloud_customize_register' );

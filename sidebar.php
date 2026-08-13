@@ -2,7 +2,8 @@
 	<?php if ( xinaide_cloud_option_enabled( 'show_profile_card' ) ) : ?>
 	<section class="widget cloud-panel profile-widget">
 		<div class="profile-visual">
-			<?php if ( xinaide_cloud_get_option( 'profile_avatar' ) ) : ?><img src="<?php echo esc_url( xinaide_cloud_get_option( 'profile_avatar' ) ); ?>" alt=""><?php else : ?><span>心</span><?php endif; ?>
+			<?php $profile_avatar = xinaide_cloud_avatar_url( xinaide_cloud_get_option( 'profile_avatar' ) ); ?>
+			<?php if ( $profile_avatar ) : ?><img src="<?php echo esc_url( $profile_avatar ); ?>" alt=""><?php else : ?><span>心</span><?php endif; ?>
 			<i aria-hidden="true"></i>
 		</div>
 		<p class="profile-kicker">ABOUT THE AUTHOR</p>
