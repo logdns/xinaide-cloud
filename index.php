@@ -36,7 +36,23 @@
 			<div><p class="eyebrow"><?php esc_html_e( 'LATEST STORIES · 持续更新', 'xinaide-cloud' ); ?></p><h1><?php echo is_home() ? esc_html__( '最新发布', 'xinaide-cloud' ) : esc_html( get_the_archive_title() ); ?></h1></div>
 			<span class="section-rule"></span>
 		</header>
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); get_template_part( 'template-parts/content', 'card' ); endwhile; ?>
+		<?php
+		$sticky_ids   = array_map( 'absint', (array) get_option( 'sticky_posts' ) );
+		$sticky_strip = ( is_home() && ! is_paged() && $sticky_ids ) ? $sticky_ids : array();
+		if ( $sticky_strip ) :
+			$stickies = get_posts( array( 'post__in' => $sticky_strip, 'posts_per_page' => 5, 'ignore_sticky_posts' => true, 'post_status' => 'publish' ) );
+			if ( $stickies ) :
+				?>
+		<section class="sticky-strip cloud-panel" aria-label="<?php esc_attr_e( '置顶文章', 'xinaide-cloud' ); ?>">
+			<ul>
+				<?php foreach ( $stickies as $sticky_post ) : ?>
+				<li><span class="sticky-badge"><?php esc_html_e( '置顶', 'xinaide-cloud' ); ?></span><a href="<?php echo esc_url( get_permalink( $sticky_post ) ); ?>"><?php echo esc_html( get_the_title( $sticky_post ) ); ?></a><time datetime="<?php echo esc_attr( get_the_date( DATE_W3C, $sticky_post ) ); ?>"><?php echo esc_html( get_the_date( '', $sticky_post ) ); ?></time></li>
+				<?php endforeach; ?>
+			</ul>
+		</section>
+			<?php endif; ?>
+		<?php endif; ?>
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); if ( $sticky_strip && in_array( get_the_ID(), $sticky_strip, true ) ) { continue; } get_template_part( 'template-parts/content', 'card' ); endwhile; ?>
 			<?php the_posts_pagination( array( 'mid_size' => 2, 'prev_text' => '← ' . __( '上一页', 'xinaide-cloud' ), 'next_text' => __( '下一页', 'xinaide-cloud' ) . ' →' ) ); ?>
 		<?php else : get_template_part( 'template-parts/content', 'none' ); endif; ?>
 	</section>

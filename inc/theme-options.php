@@ -229,7 +229,7 @@ function xinaide_cloud_options_brand_panel( $o ) {
 	xinaide_cloud_field( $o, 'max_width', '内容最大宽度（px）', 'number', '推荐 1280–1400。' );
 	xinaide_cloud_field( $o, 'sidebar_width', '侧栏宽度（px）', 'number' );
 	xinaide_cloud_field( $o, 'card_radius', '卡片圆角（px）', 'number' );
-	xinaide_cloud_field( $o, 'header_style', '页头风格', 'select', '', array( 'dark' => '深色大气', 'light' => '明亮简洁', 'glass' => '透明玻璃' ) );
+	xinaide_cloud_field( $o, 'header_style', '页头风格', 'select', '默认跟随浅色/深色模式自动切换。', array( 'dark' => '跟随明暗模式（推荐）', 'light' => '固定明亮简洁', 'glass' => '首页透明玻璃' ) );
 	xinaide_cloud_field( $o, 'sidebar_position', '侧栏位置', 'select', '', array( 'right' => '右侧', 'left' => '左侧' ) );
 	xinaide_cloud_field( $o, 'sticky_header', '吸顶导航', 'checkbox' );
 	xinaide_cloud_panel_close();

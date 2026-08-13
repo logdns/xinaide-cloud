@@ -2,6 +2,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'post-card cloud-panel' ); ?>>
 	<?php $cover = xinaide_cloud_get_post_cover(); if ( $cover ) : ?>
 		<a class="post-card-media" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
+			<span class="post-card-media-bg" style="background-image:url('<?php echo esc_url( $cover ); ?>')"></span>
 			<img src="<?php echo esc_url( $cover ); ?>" alt="" loading="lazy">
 			<?php if ( is_sticky() ) : ?><span class="post-status">TOP</span><?php elseif ( xinaide_cloud_get_likes() >= 100 || get_comments_number() >= 20 ) : ?><span class="post-status">HOT</span><?php endif; ?>
 		</a>

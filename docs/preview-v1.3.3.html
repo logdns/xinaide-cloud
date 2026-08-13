@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>xinaide-cloud v1.3.3 修复预览</title>
+<link rel="stylesheet" href="../assets/dist/app.css">
+<style>
+  body { padding-bottom: 60px; }
+  .preview-note { max-width: 1320px; margin: 30px auto 0; padding: 0 32px; color: #64787a; font-size: 13px; }
+  .preview-note strong { color: #18a88f; }
+</style>
+</head>
+<body class="header-style-dark sidebar-position-right">
+
+<!-- 头部（浅色模式应显示为白底深色字） -->
+<header class="site-header">
+  <div class="header-accent"></div>
+  <div class="cloud-container header-inner">
+    <div class="site-brand-wrap">
+      <span class="brand-mark">心</span>
+      <div class="brand-copy"><strong>心爱的-小沨</strong><small>私人小天地 · XINAI.DE</small></div>
+    </div>
+    <nav class="desktop-nav"><ul class="menu">
+      <li class="current-menu-item"><a href="#">首页</a></li>
+      <li><a href="#">网盘</a></li>
+      <li><a href="#">图床</a></li>
+      <li><a href="#">关于本站</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<p class="preview-note"><strong>① 头部</strong>：浅色模式下应为白底 + 深色导航文字（不再暗黑）。切换 <code>data-theme="dark"</code> 可变回深色。</p>
+
+<div class="cloud-container content-grid" style="padding-top:40px">
+  <section class="posts-column">
+
+    <!-- 置顶列表（xiaoz 风格） -->
+    <section class="sticky-strip cloud-panel">
+      <ul>
+        <li><span class="sticky-badge">置顶</span><a href="#">跨境电商首选 KiteSIM：全球多国号码接收短信 + 多地 eSIM 漫游上网</a><time>2026-08-10</time></li>
+        <li><span class="sticky-badge">置顶</span><a href="#">低成本拥有一张游惠宝长效卡，大陆港澳轻松漫游</a><time>2026-07-28</time></li>
+      </ul>
+    </section>
+
+    <!-- 竖图/小图卡片：应完整显示，背景模糊填充 -->
+    <article class="post-card cloud-panel">
+      <a class="post-card-media" href="#">
+        <span class="post-card-media-bg" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22520%22><rect width=%22300%22 height=%22520%22 fill=%22%23ffffff%22/><text x=%2218%22 y=%22120%22 font-size=%2264%22 font-weight=%22800%22 fill=%22%23111%22>giffgaff</text><rect x=%22160%22 y=%22160%22 width=%22110%22 height=%22140%22 rx=%2214%22 fill=%22%2325c7d9%22/><text x=%2218%22 y=%22420%22 font-size=%2240%22 fill=%22%23222%22>eSIM</text></svg>')"></span>
+        <img src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22520%22><rect width=%22300%22 height=%22520%22 fill=%22%23ffffff%22/><text x=%2218%22 y=%22120%22 font-size=%2264%22 font-weight=%22800%22 fill=%22%23111%22>giffgaff</text><rect x=%22160%22 y=%22160%22 width=%22110%22 height=%22140%22 rx=%2214%22 fill=%22%2325c7d9%22/><text x=%2218%22 y=%22420%22 font-size=%2240%22 fill=%22%23222%22>eSIM</text></svg>" alt="">
+        <span class="post-status">TOP</span>
+      </a>
+      <div class="post-card-body">
+        <div class="post-kicker"><a class="category-pill" href="#">教程学习</a><time>2024年12月29日</time></div>
+        <h2 class="post-card-title"><a href="#">使用Postman抓包giffgaff sim卡转成为esim和esim二维码信息</a></h2>
+        <div class="post-excerpt"><p>竖版小图现在完整包含在封面区内，背景用同图模糊填充，不再放大裁切。</p></div>
+        <div class="post-card-meta"><span>◉ 1980 热度</span><span>♡ 1</span><a class="read-more" href="#">阅读全文 <span>→</span></a></div>
+      </div>
+    </article>
+
+    <!-- 横版截图卡片 -->
+    <article class="post-card cloud-panel">
+      <a class="post-card-media" href="#">
+        <span class="post-card-media-bg" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%23eef3f7%22/><rect x=%2240%22 y=%2260%22 width=%22560%22 height=%22240%22 rx=%2210%22 fill=%22%23ffffff%22 stroke=%22%23c9d4dd%22/><text x=%2270%22 y=%22130%22 font-size=%2230%22 fill=%22%23333%22>Windows 11 安装界面截图</text><rect x=%2270%22 y=%22170%22 width=%22300%22 height=%2218%22 rx=%229%22 fill=%22%23d6e2ec%22/><rect x=%2270%22 y=%22200%22 width=%22420%22 height=%2218%22 rx=%229%22 fill=%22%23d6e2ec%22/></svg>')"></span>
+        <img src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22640%22 height=%22360%22 fill=%22%23eef3f7%22/><rect x=%2240%22 y=%2260%22 width=%22560%22 height=%22240%22 rx=%2210%22 fill=%22%23ffffff%22 stroke=%22%23c9d4dd%22/><text x=%2270%22 y=%22130%22 font-size=%2230%22 fill=%22%23333%22>Windows 11 安装界面截图</text><rect x=%2270%22 y=%22170%22 width=%22300%22 height=%2218%22 rx=%229%22 fill=%22%23d6e2ec%22/><rect x=%2270%22 y=%22200%22 width=%22420%22 height=%2218%22 rx=%229%22 fill=%22%23d6e2ec%22/></svg>" alt="">
+      </a>
+      <div class="post-card-body">
+        <div class="post-kicker"><a class="category-pill" href="#">windows系统</a><time>2025年3月20日</time></div>
+        <h2 class="post-card-title"><a href="#">跳过&lt;该电脑必须支持TPM 2.0&gt;安装升级WIN11</a></h2>
+        <div class="post-excerpt"><p>横版截图同样完整显示，不会被 cover 裁掉边缘内容。</p></div>
+        <div class="post-card-meta"><span>◉ 1200 热度</span><span>♡ 1</span><a class="read-more" href="#">阅读全文 <span>→</span></a></div>
+      </div>
+    </article>
+
+  </section>
+</div>
+
+<p class="preview-note"><strong>② 缩略图</strong>：双层结构（模糊背景 + object-fit:contain 完整图），竖图/横图/小图都完整可见。<br><strong>③ 置顶列表</strong>：借鉴 xiaoz 博客的清爽文字列表，置顶文章不再重复出現在下方卡片中。</p>
+
+</body>
+</html>
