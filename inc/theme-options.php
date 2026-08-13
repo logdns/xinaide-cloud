@@ -15,7 +15,7 @@ function xinaide_cloud_option_defaults() {
 		'heading_color'          => '#102a30',
 		'max_width'              => 1320,
 		'sidebar_width'          => 340,
-		'card_radius'            => 26,
+		'card_radius'            => 16,
 		'header_style'           => 'dark',
 		'sidebar_position'       => 'right',
 		'sticky_header'          => 1,
@@ -55,6 +55,7 @@ function xinaide_cloud_option_defaults() {
 		'profile_button_url'     => '/about',
 		'contact_qr'             => '',
 		'contact_title'          => '联系我',
+		'footer_kicker'          => 'XINAI.DE · SINCE 2009',
 		'footer_heading'         => '把折腾写成答案。',
 		'footer_text'            => '记录技术、生活和一路踩过的坑，也希望这里的内容能帮到你。',
 		'footer_copyright'       => '',
@@ -62,8 +63,20 @@ function xinaide_cloud_option_defaults() {
 		'footer_gov'             => '',
 		'footer_gov_url'         => '',
 		'social_github'          => 'https://github.com/logdns',
-		'social_telegram'        => '',
-		'social_email'           => '',
+		'social_telegram'        => 'https://t.me/giffgaffbuy',
+		'social_weibo'           => 'https://weibo.com/4346835',
+		'social_bilibili'        => '',
+		'social_x'               => 'https://twitter.com/logdns',
+		'social_youtube'         => 'https://www.youtube.com/@xtom',
+		'social_email'           => '270473446@qq.com',
+		'social_wechat'          => '',
+		'social_qq'              => '',
+		'show_rss'               => 1,
+		'show_uptime'            => 1,
+		'site_launch_date'       => '2009-11-07',
+		'show_status'            => 1,
+		'status_url'             => 'https://status.xinai.de/',
+		'status_text'            => '服务器运行状态',
 		'seo_keywords'           => '',
 		'seo_description'        => '',
 		'share_image'            => '',
@@ -88,8 +101,8 @@ function xinaide_cloud_option_enabled( $key ) {
 function xinaide_cloud_sanitize_options( $input ) {
 	$defaults = xinaide_cloud_option_defaults();
 	$output   = array();
-	$checks   = array( 'sticky_header', 'show_home_hero', 'show_author', 'show_date', 'show_reading_time', 'show_comments', 'show_views', 'show_likes', 'show_breadcrumbs', 'show_toc', 'title_only_search', 'show_profile_card' );
-	$urls     = array( 'hero_background', 'hero_primary_url', 'hero_secondary_url', 'profile_avatar', 'profile_button_url', 'contact_qr', 'default_cover', 'footer_gov_url', 'social_github', 'social_telegram', 'share_image' );
+	$checks   = array( 'sticky_header', 'show_home_hero', 'show_author', 'show_date', 'show_reading_time', 'show_comments', 'show_views', 'show_likes', 'show_breadcrumbs', 'show_toc', 'title_only_search', 'show_profile_card', 'show_rss', 'show_uptime', 'show_status' );
+	$urls     = array( 'hero_background', 'hero_primary_url', 'hero_secondary_url', 'profile_avatar', 'profile_button_url', 'contact_qr', 'default_cover', 'footer_gov_url', 'social_github', 'social_telegram', 'social_weibo', 'social_bilibili', 'social_x', 'social_youtube', 'status_url', 'share_image' );
 	$textarea = array( 'hero_title', 'hero_text', 'profile_text', 'footer_text', 'custom_css' );
 	$numbers  = array( 'max_width', 'sidebar_width', 'card_radius', 'hero_height', 'hero_overlay', 'excerpt_length' );
 
@@ -273,16 +286,29 @@ function xinaide_cloud_options_sidebar_panel( $o ) {
 }
 
 function xinaide_cloud_options_footer_panel( $o ) {
-	xinaide_cloud_panel_open( '↘', '页脚内容', '补齐品牌说明、导航、分类与备案信息。' );
+	xinaide_cloud_panel_open( '↘', '页脚与社交', '品牌说明、社交渠道与备案信息，前台自动以图标形式展示。' );
+	xinaide_cloud_field( $o, 'footer_kicker', '页脚眉题', 'text', '显示在主标题上方的小字，如 XINAI.DE · SINCE 2009。' );
 	xinaide_cloud_field( $o, 'footer_heading', '页脚主标题' );
 	xinaide_cloud_field( $o, 'footer_text', '页脚说明', 'textarea' );
+	xinaide_cloud_field( $o, 'social_github', 'GitHub 链接', 'url' );
+	xinaide_cloud_field( $o, 'social_telegram', 'Telegram 链接', 'url' );
+	xinaide_cloud_field( $o, 'social_weibo', '微博链接', 'url' );
+	xinaide_cloud_field( $o, 'social_bilibili', 'Bilibili 链接', 'url' );
+	xinaide_cloud_field( $o, 'social_x', 'X (Twitter) 链接', 'url' );
+	xinaide_cloud_field( $o, 'social_youtube', 'YouTube 链接', 'url' );
+	xinaide_cloud_field( $o, 'social_email', '联系邮箱', 'email', '前台点击即可复制。' );
+	xinaide_cloud_field( $o, 'social_wechat', '微信号', 'text', '填写微信号，前台点击复制。' );
+	xinaide_cloud_field( $o, 'social_qq', 'QQ 号', 'text', '填写 QQ 号，前台点击复制。' );
+	xinaide_cloud_field( $o, 'show_rss', '显示 RSS 订阅入口', 'checkbox', '自动生成站点 RSS 地址，无需填写链接。' );
+	xinaide_cloud_field( $o, 'show_uptime', '显示网站运行时间', 'checkbox', '页脚显示「网站运行：X年X天X时X分X秒」实时计时。' );
+	xinaide_cloud_field( $o, 'site_launch_date', '建站日期', 'text', '格式 YYYY-MM-DD，按 UTC+8 计时，如 2009-11-07。' );
+	xinaide_cloud_field( $o, 'show_status', '显示服务器状态入口', 'checkbox', '页脚显示服务器运行状态链接。' );
+	xinaide_cloud_field( $o, 'status_url', '服务器状态页链接', 'url', '如 Uptime Kuma 状态页地址。' );
+	xinaide_cloud_field( $o, 'status_text', '状态入口文字', 'text', '默认为「服务器运行状态」。' );
 	xinaide_cloud_field( $o, 'footer_copyright', '自定义版权文字', 'text', '留空时自动显示年份和站点名称。' );
 	xinaide_cloud_field( $o, 'footer_icp', '备案/补充信息' );
 	xinaide_cloud_field( $o, 'footer_gov', '公安备案号' );
 	xinaide_cloud_field( $o, 'footer_gov_url', '公安备案链接', 'url' );
-	xinaide_cloud_field( $o, 'social_github', 'GitHub 链接', 'url' );
-	xinaide_cloud_field( $o, 'social_telegram', 'Telegram 链接', 'url' );
-	xinaide_cloud_field( $o, 'social_email', '联系邮箱', 'email' );
 	xinaide_cloud_panel_close();
 }
 
