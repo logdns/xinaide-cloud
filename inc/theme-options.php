@@ -206,7 +206,10 @@ function xinaide_cloud_field( $options, $key, $label, $type = 'text', $descripti
 		<?php elseif ( 'select' === $type ) : ?>
 			<select id="xinaide-<?php echo esc_attr( $key ); ?>" name="<?php echo esc_attr( $name ); ?>"><?php foreach ( $choices as $choice_value => $choice_label ) : ?><option value="<?php echo esc_attr( $choice_value ); ?>" <?php selected( $value, $choice_value ); ?>><?php echo esc_html( $choice_label ); ?></option><?php endforeach; ?></select>
 		<?php elseif ( 'image' === $type ) : ?>
-			<div class="xinaide-media-field"><input id="xinaide-<?php echo esc_attr( $key ); ?>" type="url" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>"><button type="button" class="button xinaide-media-button" data-target="xinaide-<?php echo esc_attr( $key ); ?>"><?php esc_html_e( '选择图片', 'xinaide-cloud' ); ?></button></div><div class="xinaide-media-preview"><?php if ( $value ) : ?><img src="<?php echo esc_url( $value ); ?>" alt=""><?php endif; ?></div>
+			<div class="xinaide-media-field"><input id="xinaide-<?php echo esc_attr( $key ); ?>" type="text" inputmode="url" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>"><button type="button" class="button xinaide-media-button" data-target="xinaide-<?php echo esc_attr( $key ); ?>"><?php esc_html_e( '选择图片', 'xinaide-cloud' ); ?></button></div><div class="xinaide-media-preview"><?php if ( $value ) : ?><img src="<?php echo esc_url( $value ); ?>" alt=""><?php endif; ?></div>
+		<?php elseif ( 'url' === $type || 'email' === $type ) : ?>
+			<?php // 不用原生 url/email 类型，避免浏览器 HTML5 校验拦截 #锚点 和 /相对路径。 ?>
+			<input id="xinaide-<?php echo esc_attr( $key ); ?>" type="text" inputmode="url" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>">
 		<?php else : ?>
 			<input id="xinaide-<?php echo esc_attr( $key ); ?>" type="<?php echo esc_attr( $type ); ?>" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>">
 		<?php endif; ?>

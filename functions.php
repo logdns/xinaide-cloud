@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'XINAIDE_CLOUD_VERSION', '1.4.0' );
+define( 'XINAIDE_CLOUD_VERSION', '1.4.1' );
 
 require_once get_template_directory() . '/inc/theme-options.php';
 
