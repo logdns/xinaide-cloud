@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>xinaide-cloud v1.4.0 修复预览</title>
+<title>xinaide-cloud v1.5.0 修复预览</title>
 <link rel="stylesheet" href="../assets/dist/app.css">
 <style>
   body { padding-bottom: 60px; }
@@ -57,10 +57,46 @@
     <p>支持 Debian / Ubuntu 服务器。准备解析到服务器的邮件主机名，例如 <code>mail.example.com</code>。</p>
     <pre><code>curl -fsSL https://raw.githubusercontent.com/logdns/imyemail/main/install.sh | sudo bash</code></pre>
     <p>脚本会自动完成：下载 Rust 管理器并校验 SHA-256，安装 Docker Engine 与 Compose v2。</p>
+    <p>超长链接不再错位：<a href="https://raw.githubusercontent.com/logdns/imyemail/main/install.sh?token=abcdefghijklmnopqrstuvwxyz1234567890veryveryverylongstring">https://raw.githubusercontent.com/logdns/imyemail/main/install.sh?token=abcdefghijklmnopqrstuvwxyz1234567890veryveryverylongstring</a>，随便点。</p>
   </div>
 </div>
 
 <p class="preview-note"><strong>③ 代码块</strong>：浅色面板 + 深色等宽文字，兼容 Editor.md / Prism 浅色高亮，深字深底问题已修复。</p>
+
+<!-- ④ 超长链接：任意位置断行，不撑破版面 -->
+<p class="preview-note"><strong>④ 文章超长链接</strong>：正文与链接支持任意位置断行（overflow-wrap），长 URL 自动换行，右侧栏不再被挤乱。</p>
+
+<!-- ⑤ 侧栏：分类徽章卡片 + 友情链接名片卡片 -->
+<div class="cloud-container" style="padding-top:36px">
+  <aside class="sidebar" style="position:static; max-width:340px">
+    <section class="widget cloud-panel">
+      <div class="widget-number">03</div>
+      <h2 class="widget-title">分类导航</h2>
+      <ul class="cloud-categories">
+        <li class="cat-item cat-item-1"><a href="#">折腾笔记 <span class="count">(12)</span></a></li>
+        <li class="cat-item cat-item-2"><a href="#">生活日常 <span class="count">(8)</span></a></li>
+        <li class="cat-item cat-item-3"><a href="#">技术教程 <span class="count">(25)</span></a></li>
+        <li class="cat-item cat-item-4"><a href="#">NAS 与存储 <span class="count">(16)</span></a></li>
+        <li class="cat-item cat-item-5"><a href="#">开箱评测 <span class="count">(3)</span></a></li>
+        <li class="cat-item cat-item-6"><a href="#">随笔杂谈 <span class="count">(7)</span></a></li>
+      </ul>
+    </section>
+    <section class="widget cloud-panel widget_links">
+      <div class="widget-number">04</div>
+      <h2 class="widget-title">友情链接</h2>
+      <ul class="xoxo blogroll">
+        <li><a href="https://example.com" rel="noopener">Example 博客</a></li>
+        <li><a href="https://example.com" rel="noopener">记录折腾</a></li>
+        <li><a href="https://example.com" rel="noopener">技术分享派对与碎碎念</a></li>
+        <li><a href="https://example.com" rel="noopener">小站</a><p class="link-description">一个写着玩的个人小站，欢迎互链。</p></li>
+        <li><a href="https://example.com" rel="noopener">生活志</a></li>
+        <li><a href="https://example.com" rel="noopener">VPS 折腾</a></li>
+      </ul>
+    </section>
+  </aside>
+</div>
+
+<p class="preview-note"><strong>⑤ 侧栏卡片</strong>：「分类导航」双列徽章卡片 + 计数徽章；「友情链接」双列名片卡片，支持简介与悬停反馈。</p>
 
 </body>
 </html>
