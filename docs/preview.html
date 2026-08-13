@@ -6,39 +6,50 @@
 <title>xinaide-cloud v1.5.0 修复预览</title>
 <link rel="stylesheet" href="../assets/dist/app.css">
 <style>
-  body { padding-bottom: 60px; }
   .preview-note { max-width: 1320px; margin: 30px auto 0; padding: 0 32px; color: #64787a; font-size: 13px; line-height: 1.9; }
   .preview-note strong { color: #18a88f; }
 </style>
 </head>
 <body class="header-style-dark sidebar-position-right">
 
-<!-- ① 页头：浅色模式白底深字 + 上传头像圆形裁切 -->
 <header class="site-header">
-  <div class="header-accent"></div>
+  <div class="header-accent" aria-hidden="true"></div>
   <div class="cloud-container header-inner">
     <div class="site-brand-wrap">
       <a class="brand-mark brand-mark-image" href="#"><img src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22><rect width=%22160%22 height=%22160%22 fill=%22%2318a88f%22/><circle cx=%2280%22 cy=%2262%22 r=%2226%22 fill=%22%23fff%22/><rect x=%2240%22 y=%2298%22 width=%2280%22 height=%2240%22 rx=%2220%22 fill=%22%23fff%22/></svg>" alt=""></a>
-      <a class="brand-copy" href="#"><strong>心爱的-小沨</strong><small>知名博客|折腾博客|心爱的 / xinai.de</small></a>
+      <a class="brand-copy" href="#"><strong>心爱的-小沨</strong><small>知名博客 | 折腾博客 | 心爱的 / xinai.de</small></a>
     </div>
-    <nav class="desktop-nav"><ul class="menu">
+    <nav class="desktop-nav" aria-label="主导航"><ul class="menu">
       <li class="current-menu-item"><a href="#">首页</a></li>
       <li><a href="#">网盘</a></li>
       <li><a href="#">图床</a></li>
       <li><a href="#">赞助</a></li>
       <li><a href="#">关于本站</a></li>
     </ul></nav>
+    <div class="cloud-toolbar">
+      <button class="icon-button" type="button" aria-label="搜索">⌕</button>
+      <button class="icon-button" type="button" aria-label="切换深浅色">◐</button>
+      <button class="icon-button mobile-menu-button" type="button" aria-label="菜单">☰</button>
+    </div>
   </div>
 </header>
 
-<p class="preview-note"><strong>① 页头</strong>：浅色模式下白底深色导航；「页头头像」上传后自动圆形裁切（此处用示例图演示，原为「心」字标）。</p>
-
-<!-- ② 横幅数据统计：长文字不换行错乱 -->
-<section class="hero-section" style="--hero-image:url('../assets/images/hero-water.jpg'); min-height:340px">
-  <div class="cloud-container hero-inner" style="min-height:220px">
+<section class="hero-section" style="--hero-image:url('../assets/images/hero-water.jpg'); min-height:520px">
+  <div class="cloud-container hero-inner" style="min-height:400px">
     <div class="hero-copy">
       <p class="eyebrow">XINAI.DE · PRIVATE DIGITAL GARDEN</p>
-      <h1 style="font-size:56px">在折腾里，记录世界。</h1>
+      <h1 style="font-size:64px">在折腾里，记录世界。</h1>
+      <p class="hero-description">技术、生活与跨境实践，一个持续更新的私人知识花园。</p>
+      <div class="hero-actions">
+        <a class="hero-button hero-button-primary" href="#">开始阅读 <span>↘</span></a>
+        <a class="hero-button hero-button-secondary" href="#">关于小沨 <span>→</span></a>
+      </div>
+    </div>
+    <div class="hero-manifesto">
+      <span class="manifesto-index">01 — 记录</span>
+      <p>分享有用的经验，<br>也保留真实的生活。</p>
+      <div class="manifesto-line"></div>
+      <small>EST. 2009 · XINAI.DE</small>
     </div>
   </div>
   <div class="cloud-container hero-stats">
@@ -49,28 +60,64 @@
   </div>
 </section>
 
-<p class="preview-note"><strong>② 横幅数据</strong>：「生活 × 技术」不再换行错乱，数值 nowrap + 自适应字号。</p>
+<section class="topic-strip" aria-label="热门分类">
+  <div class="cloud-container topic-strip-inner"><span>探索主题</span><a href="#">折腾笔记<sup>12</sup></a><a href="#">技术教程<sup>25</sup></a><a href="#">NAS 与存储<sup>16</sup></a><a href="#">生活日常<sup>8</sup></a><a href="#">开箱评测<sup>3</sup></a><a href="#">随笔杂谈<sup>7</sup></a></div>
+</section>
 
-<div class="cloud-container narrow-container" style="padding-top:36px">
-  <div class="entry-content">
-    <h2>一键安装</h2>
-    <p>支持 Debian / Ubuntu 服务器。准备解析到服务器的邮件主机名，例如 <code>mail.example.com</code>。</p>
-    <pre><code>curl -fsSL https://raw.githubusercontent.com/logdns/imyemail/main/install.sh | sudo bash</code></pre>
-    <p>脚本会自动完成：下载 Rust 管理器并校验 SHA-256，安装 Docker Engine 与 Compose v2。</p>
-    <p>超长链接不再错位：<a href="https://raw.githubusercontent.com/logdns/imyemail/main/install.sh?token=abcdefghijklmnopqrstuvwxyz1234567890veryveryverylongstring">https://raw.githubusercontent.com/logdns/imyemail/main/install.sh?token=abcdefghijklmnopqrstuvwxyz1234567890veryveryverylongstring</a>，随便点。</p>
-  </div>
-</div>
+<div class="cloud-container content-grid" id="latest-posts">
+  <section class="posts-column">
+    <header class="section-heading">
+      <div><p class="eyebrow">LATEST STORIES · 持续更新</p><h1>最新发布</h1></div>
+      <span class="section-rule"></span>
+    </header>
 
-<p class="preview-note"><strong>③ 代码块</strong>：浅色面板 + 深色等宽文字，兼容 Editor.md / Prism 浅色高亮，深字深底问题已修复。</p>
+    <section class="sticky-strip cloud-panel" aria-label="置顶文章">
+      <ul>
+        <li><span class="sticky-badge">置顶</span><a href="#">如何给 WordPress 主题做一次完整的性能体检</a><time datetime="2026-08-01">2026-08-01</time></li>
+        <li><span class="sticky-badge">置顶</span><a href="#">自建邮件服务器踩坑记：从 SPF 到 DKIM</a><time datetime="2026-07-20">2026-07-20</time></li>
+      </ul>
+    </section>
 
-<!-- ④ 超长链接：任意位置断行，不撑破版面 -->
-<p class="preview-note"><strong>④ 文章超长链接</strong>：正文与链接支持任意位置断行（overflow-wrap），长 URL 自动换行，右侧栏不再被挤乱。</p>
+    <article class="post-card cloud-panel">
+      <a class="post-card-media" href="#" tabindex="-1" aria-hidden="true">
+        <span class="post-card-media-bg" style="background-image:url('../assets/images/hero-water.jpg')"></span>
+        <img src="../assets/images/hero-water.jpg" alt="" loading="lazy">
+        <span class="post-status">HOT</span>
+      </a>
+      <div class="post-card-body">
+        <div class="post-kicker"><a class="category-pill" href="#">NAS 与存储</a><time datetime="2026-08-10">2026-08-10</time></div>
+        <h2 class="post-card-title"><a href="#">两盘位 NAS 换新记：从 RAID 1 到无阵列的取舍</a></h2>
+        <div class="post-excerpt"><p>用了两年的两盘位 NAS 终于换了新机。这篇记录迁移过程中的数据备份、阵列选择与功耗对比，也给同样在权衡 RAID 与直通的朋友一些参考。</p></div>
+        <div class="post-card-meta"><span>◉ 1284 热度</span><span>♡ 96</span><span>BY 小沨</span><span>6 分钟</span><a class="read-more" href="#">阅读全文 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </article>
 
-<!-- ⑤ 侧栏：分类徽章卡片 + 友情链接名片卡片 -->
-<div class="cloud-container" style="padding-top:36px">
-  <aside class="sidebar" style="position:static; max-width:340px">
+    <article class="post-card cloud-panel">
+      <a class="post-card-media" href="#" tabindex="-1" aria-hidden="true">
+        <span class="post-card-media-bg" style="background:linear-gradient(145deg,#0d7a72,#2fb5a0)"></span>
+        <span style="position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-size:56px;color:rgba(255,255,255,.92)">☁</span>
+        <span class="post-status">TOP</span>
+      </a>
+      <div class="post-card-body">
+        <div class="post-kicker"><a class="category-pill" href="#">折腾笔记</a><time datetime="2026-08-06">2026-08-06</time></div>
+        <h2 class="post-card-title"><a href="#">EdgeOne › 免费 CDN 接入个人站：全站动静分离实践</a></h2>
+        <div class="post-excerpt"><p>把全站接入 CDN 之后，访问速度与源站负载都有了明显改善。记录规则配置、缓存刷新与证书管理的完整流程。</p></div>
+        <div class="post-card-meta"><span>◉ 862 热度</span><span>♡ 54</span><span>BY 小沨</span><span>9 分钟</span><a class="read-more" href="#">阅读全文 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </article>
+  </section>
+
+  <aside class="sidebar">
+    <section class="widget cloud-panel profile-widget">
+      <div class="profile-visual"><span>心</span><i aria-hidden="true"></i></div>
+      <p class="profile-kicker">ABOUT THE AUTHOR</p>
+      <h2>你好，我是小沨</h2>
+      <p>一个喜欢把技术折腾、生活经验和实用教程写下来的 80 后。</p>
+      <a class="profile-link" href="#">了解更多 <span>→</span></a>
+    </section>
+
     <section class="widget cloud-panel">
-      <div class="widget-number">03</div>
+      <div class="widget-number">02</div>
       <h2 class="widget-title">分类导航</h2>
       <ul class="cloud-categories">
         <li class="cat-item cat-item-1"><a href="#">折腾笔记 <span class="count">(12)</span></a></li>
@@ -81,8 +128,9 @@
         <li class="cat-item cat-item-6"><a href="#">随笔杂谈 <span class="count">(7)</span></a></li>
       </ul>
     </section>
+
     <section class="widget cloud-panel widget_links">
-      <div class="widget-number">04</div>
+      <div class="widget-number">03</div>
       <h2 class="widget-title">友情链接</h2>
       <ul class="xoxo blogroll">
         <li><a href="https://example.com" rel="noopener">Example 博客</a></li>
@@ -96,7 +144,44 @@
   </aside>
 </div>
 
-<p class="preview-note"><strong>⑤ 侧栏卡片</strong>：「分类导航」双列徽章卡片 + 计数徽章；「友情链接」双列名片卡片，支持简介与悬停反馈。</p>
+<p class="preview-note"><strong>v1.5.0 修复看点</strong>：① 文章内页超长链接任意位置断行，不再撑破版面；② 侧栏「分类导航」「友情链接」卡片化，双列徽章/名片布局。下方为修复演示：</p>
+
+<div class="cloud-container narrow-container" style="padding-top:6px">
+  <div class="entry-content">
+    <h2>一键安装与超长链接演示</h2>
+    <p>支持 Debian / Ubuntu 服务器。准备解析到服务器的邮件主机名，例如 <code>mail.example.com</code>。</p>
+    <pre><code>curl -fsSL https://raw.githubusercontent.com/logdns/imyemail/main/install.sh | sudo bash</code></pre>
+    <p>超长链接不再错位：<a href="https://raw.githubusercontent.com/logdns/imyemail/main/install.sh?token=abcdefghijklmnopqrstuvwxyz1234567890veryveryverylongstring">https://raw.githubusercontent.com/logdns/imyemail/main/install.sh?token=abcdefghijklmnopqrstuvwxyz1234567890veryveryverylongstring</a>，随便点。</p>
+    <p>脚本会自动完成：下载 Rust 管理器并校验 SHA-256，安装 Docker Engine 与 Compose v2。</p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="cloud-container footer-grid">
+    <div class="footer-intro">
+      <span class="footer-kicker">XINAI.DE · SINCE 2009</span>
+      <h2>把折腾写成答案。</h2>
+      <p>记录技术、生活和一路踩过的坑，也希望这里的内容能帮到你。</p>
+      <div class="footer-socials">
+        <a class="footer-social" href="#" aria-label="GitHub">GH</a>
+        <a class="footer-social" href="#" aria-label="Telegram">TG</a>
+        <a class="footer-social" href="#" aria-label="微博">WB</a>
+        <a class="footer-social" href="#" aria-label="X">X</a>
+        <a class="footer-social" href="#" aria-label="YouTube">YT</a>
+        <a class="footer-social" href="#" aria-label="RSS">RSS</a>
+      </div>
+    </div>
+    <nav class="footer-nav" aria-label="页脚导航"><h3>继续探索</h3><ul class="menu"><li><a href="#">首页</a></li><li><a href="#">网盘</a></li><li><a href="#">图床</a></li><li><a href="#">赞助</a></li><li><a href="#">关于本站</a></li></ul></nav>
+    <div class="footer-categories"><h3>热门分类</h3><ul><li><a href="#">技术教程</a></li><li><a href="#">NAS 与存储</a></li><li><a href="#">折腾笔记</a></li><li><a href="#">生活日常</a></li></ul></div>
+    <div class="footer-facts"><h3>关于本站</h3><strong>640</strong><span>篇公开文章</span><strong>17</strong><span>年持续记录</span></div>
+  </div>
+  <div class="cloud-container footer-bottom">
+    <span>Copyright © 2026 心爱的-小沨</span>
+    <span class="footer-uptime">网站运行：<span class="footer-uptime-value">16年283天9时11分41秒</span></span>
+    <span class="footer-status"><a href="#">服务器运行状态</a></span>
+    <span class="footer-credits">Powered by WordPress · xinaide-cloud</span>
+  </div>
+</footer>
 
 </body>
 </html>
